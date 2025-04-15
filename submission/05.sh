@@ -24,6 +24,6 @@ SizeBH=$(echo -n $lehexBH | wc -c | awk '{print $1/2}')
 pubkeyhash=$(echo $publickey | xxd -r -p | openssl sha256 -binary | openssl rmd160 | cut -d' ' -f2)
 #echo $pubkeyhash
 
-# Script format : OP_PUSHDATA 4bytes <time> OP_CHECKSEQUENCEVERIFY OP_DROP OP_DUP OP_HASH160 OP_PUSHDATA 20bytes <pubKeyHash> OP_EQUALVERIFY OP_CHECKSIG
-CSV_Script="0$SizeBH"$lehexBH"b275766a914"$pubkeyhash"88ac"
+# Script format : OP_PUSHDATA <SIZE> <time> OP_CHECKSEQUENCEVERIFY OP_DROP OP_DUP OP_HASH160 OP_PUSHDATA 20bytes <pubKeyHash> OP_EQUALVERIFY OP_CHECKSIG
+CSV_Script="0$SizeBH"$lehexBH"b27576a914"$pubkeyhash"88ac"
 echo $CSV_Script
